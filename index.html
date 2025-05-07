@@ -10,5 +10,38 @@
     <header>
     <div>PERFUMARIA</div> 
     </header>
+    <a href="/cadastro.html">Link Cadastro e</a>
+    <h1>Lista de Estudantes</h1>
+    <ul id="minhalista">
+
+    </ul>
+    <script>
+        async function buscaDados(){
+        const resposta = await fetch("http://localhost:8000/perfumes")
+        console.log(resposta)
+        if(resposta.status ===200){
+            const dados = await resposta.json()
+            console.log(dados)
+            console.log(dados[0].nome)
+            const ul = document.getElementById("minhalista")
+            for (let i = 0; i < array.length; i++) {
+                const element = array[i];
+                const novoli = document.createElement("li")
+                novoli.innerText = element.nome
+                ul.appendChild(novoli)
+            }
+        }else{
+            if(resposta.status ===40){
+                const dados = await resposta.json(
+                    alert(dados.mensagem)
+                )
+            }
+            else{
+                alert("ERRO NÃO IDENTIFICADO")
+            }
+        }
+        }
+        buscaDados()
+    </script>
 </body>
 </html>
