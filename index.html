@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="catalogo.html">
     <title>PERFUMARIA</title>
 </head>
 
@@ -64,11 +63,11 @@
     </ul>
     <script>
         async function buscaDados() {
-            const resposta = await fetch("http://localhost:8000/perfumes")
-            console.log(resposta)
+            const dados = await fetch("http://localhost:8000/perfumes")
+            console.log(dados)
             const listaDeProdutos = document.querySelector('.product-list');
-            if (resposta.status === 200) {
-                const produtos = await resposta.json()
+            if (dados.status === 200) {
+                const produtos = await dados.json()
                 produtos.forEach(produto => {
                     const card = document.createElement('div');
                     card.classList.add('product-card');
@@ -84,17 +83,6 @@
                 });
 
 
-
-                console.log(dados)
-                console.log(dados[0].nome)
-                const ul = document.getElementById("minhalista")
-                for (let i = 0; i < dados.length; i++) {
-                    const element = dados[i];
-                    const novoli = document.createElement("li")
-                    novoli.innerText = element.nome
-                    ul.appendChild(novoli)
-                }
-            } else {
                 if (resposta.status === 400) {
                     const dados = await resposta.json(
                         alert(dados.mensagem)
