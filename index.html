@@ -5,59 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>PERFUMARIA</title>
+    <title></title>
 </head>
 
 <body>
-        <!-- Menu de Navegação Lateral -->
-        <nav>
-            <div class="content">
-                <header>
-                    <div class="search-bar">
-                        <input type="text" placeholder="Buscar produtos">
-                        <button>Pesquisar</button>
-                         
-                    </div>
-                </header>
-    
-                <section class="product-list">
-                </section>
-            </div>
-    
-        </nav>
-    
-    
-        <div class="main-menu">
-            <h2>Menu</h2>
-            <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Categorias</a>
-                    <ul class="submenu">
-                        <li><a href="#">Feminino</a></li>
-                        <li><a href="#">Masculino</a></li>
-                        <li><a href="#">Infantil</a></li>
-                    </ul>
-                </li>
-            </ul>
+    <!-- Menu de Navegação Lateral -->
+    <nav>
+        <div class="content">
+            <header>
+                <div class="search-bar">
+                    <input type="text" placeholder="Buscar produtos">
+                    <button>Pesquisar</button>
+
+                </div>
+            </header>
+
+            <section class="product-list">
+            </section>
         </div>
-        <!-- Rodapé -->
-        <footer>
-            <div class="footer-links">
-                <ul>
-                    <li><a href="#">Política de Privacidade</a></li>
-                    <li><a href="#">Termos de Serviço</a></li>
+
+    </nav>
+
+
+    <div class="main-menu">
+        <h2>Menu</h2>
+        <ul>
+             <li><a href="#">Categorias</a>
+                <ul class="submenu">
+                    <li><a href="#">Feminino</a></li>
+                    <li><a href="#">Masculino</a></li>
+                    <li><a href="#">Infantil</a></li>
                 </ul>
-            </div>
-            <div class="footer-contact">
-                <p>Contato: perfumaria.com</p>
-            </div>
-        </footer>
-    
-    <header>
-        <div>PERFUMARIA</div>
-    </header>
+            </li>
+        </ul>
+    </div>
+   
+
     <a href="/catalogo.html">Link Catalogo Perfumes</a>
-    <h1>Lista de Perfumes</h1>
     <ul id="minhalista">
 
     </ul>
@@ -68,29 +52,29 @@
             const listaDeProdutos = document.querySelector('.product-list');
             if (dados.status === 200) {
                 const produtos = await dados.json()
+                console.log(produtos)
                 produtos.forEach(produto => {
                     const card = document.createElement('div');
                     card.classList.add('product-card');
                     card.innerHTML = `
-            <img src="${produto.imagem}" alt="${produto.nome}">
-            <h2>${produto.nome}</h2>
-            <p>${produto.preço}</p>
-            <p>${produto.descrição}</p>
+                            <img src="${produto.imagem}" alt="${produto.nome}">
+                            <h2>${produto.nome}</h2>
+                            <p>${produto.preço}</p>
+                            <p>${produto.descrição}</p>
             
-            <button>Comprar</button>
-        `;
+                            <button>Comprar</button>
+                             `;
                     listaDeProdutos.appendChild(card);
                 });
 
-
-                if (resposta.status === 400) {
-                    const dados = await resposta.json(
-                        alert(dados.mensagem)
-                    )
-                }
-                else {
-                    alert("ERRO NÃO IDENTIFICADO")
-                }
+            }
+            else if (dados.status === 400) {
+                const dados = await dados.json(
+                    alert(dados.mensagem)
+                )
+            }
+            else {
+                alert("ERRO NÃO IDENTIFICADO")
             }
         }
         buscaDados()
