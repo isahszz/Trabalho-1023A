@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Perfumes</title>
+</head>
+<body>
+    <form onsubmit="event.preventDefault(); trataform()">
+        <label for="id">ID</label>
+        <input type="text" id="id" name="id">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome">
+        <input type="submit" value="Cadastrar">
+    </form>
+
+    <script>
+        async function trataform() {
+            const inputId = document.getElementById("id");
+            const inputNome = document.getElementById("nome");
+            const id = inputId.value;
+            const nome = inputNome.value;
+
+            const objPerfumes = {
+                id,
+                nome
+            };
+
+            try {
+                const resposta = await fetch("http://localhost:8000/perfumes", {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    method: "POST",
+                    body: JSON.stringify(objPerfumes)
+                });
+
+                if (resposta.status === 200) {
+                    alert("Usuário cadastrado com sucesso!");
+                } else if (resposta.status === 400) {
+                    const dados = await resposta.json();
+                    alert(`Erro do lado do backend:\n${dados.mensagem}`);
+                } else if (resposta.status === 404) {
+                    alert("Erro não identificado. :(");
+                }
+            } catch (erro) {
+                alert("Erro: Erro na requisição do FETCH\nVocê ligou o BACKEND com 'npm run dev'?");
+                console.error(erro);
+            }
+        }
+    </script>
+</body>
+</html>

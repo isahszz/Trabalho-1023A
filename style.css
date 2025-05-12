@@ -5,7 +5,7 @@ body {
     box-sizing: border-box;
 }
 header, footer {
-    background-color: #65eeb9; 
+    background-color: #69ebeb; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,8 +60,8 @@ header, footer {
 }
 
 .main-menu {
-    width: 230px;
-    background-color: #F8BBD0; 
+    width: px;
+    background-color: #ff00aa; 
     height: 100vh;
     position: absolute;
     top: 0;
@@ -112,7 +112,8 @@ header, footer {
     margin: 10px;
     padding: 10px;
     text-align: center;
-    width: 200px;
+    width: 0px;
+    height: 200;
 }
 .product-card img {
     width: 100%;
@@ -128,7 +129,7 @@ header, footer {
 }
 .product-card button {
     padding: 10px;
-    background-color: #F48FB1; 
+    background-color: #44beee; 
     color: white;
     border: none;
     cursor: pointer;
