@@ -13,8 +13,11 @@
         <label for="nome">nome</label>
         <input type="text" id="nome" name="nome">
         <label for="preço">preço</label>
-        <input type="preço" id="preço" name="preço">
-        <label for
+        <input type="number" id="preço" name="preço" min="">
+        <label for="tamanho">tamanho</label>
+        <input type="text" id="tamanho" name="tamanho">
+        <label for="descrição">descrição</label>
+        <input type="text" id="descrição" name="descrição">
         <input type="submit" value="Cadastrar">
     </form>
     <script>
@@ -28,10 +31,11 @@
                 id,
                 nome,
                 preço,
-                tamanho
+                tamanho,
+                descrição
             }
             try{
-                const resposta = await fetch("http://localhost:8000/cadastro",{
+                const resposta = await fetch("http://localhost:8000/perfumes",{
                     headers:{
                         'Content-Type': 'application/json'
                     },
