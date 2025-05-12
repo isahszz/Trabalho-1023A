@@ -237,3 +237,46 @@ footer .footer-links ul li a {
         width: 90%;
     }
 }
+form {
+    background-color: #FFFDE7;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 1px solid #FFECB3;
+}
+
+form label {
+    font-weight: bold;
+    color: #4E342E;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="number"] {
+    padding: 10px;
+    border: 1px solid #FFD54F;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #FFFBF0;
+    outline: none;
+}
+
+form input[type="submit"] {
+    background-color: #FFB300;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #FFA000;
+}
