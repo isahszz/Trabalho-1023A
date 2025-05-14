@@ -32,7 +32,7 @@
             const preco = document.getElementById("preco").value;
             const descricao = document.getElementById("descricao").value;
 
-            const objPerfume = {
+            const objPerfumes = {
                 id,
                 nome,
                 preco,
@@ -45,7 +45,7 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(objPerfume)
+                    body: JSON.stringify(objPerfumes)
                 });
 
                 if (resposta.ok) {
