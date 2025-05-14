@@ -7,57 +7,58 @@
     <link rel="stylesheet" href="style.css">
     <title>Cadastro</title>
 </head>
+
 <body>
-    <form onsubmit="event.preventDefault();trataform()">
-        <label for="id">id</label>
-        <input type="number" id="id" name="id" min="1" max="500">
-        <label for="nome">nome</label>
-        <input type="text" id="nome" name="nome">
-        <label for="preço">preço</label>
-        <input type="number" id="preço" name="preço" min="0" max="1000">
-        <label for="tamanho">tamanho</label>
-        <input type="text" id="tamanho" name="tamanho">
-        <label for="descrição">descrição</label>
-        <input type="text" id="descrição" name="descrição">
+    <form onsubmit="event.preventDefault(); trataForm()">
+        <label for="id">ID</label>
+        <input type="number" id="id" name="id" min="1" max="500" required>
+
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="preco">Preço</label>
+        <input type="number" id="preco" name="preco" min="0" max="1000" step="0.01" required>
+
+        <label for="descricao">Descrição</label>
+        <input type="text" id="descricao" name="descricao" required>
+
         <input type="submit" value="Cadastrar">
     </form>
+
     <script>
-        async function trataform() {
-            const inputId = document.getElementById("id")
-            const inputNome = document.getElementById("nome")
-            const id = inputId.value
-            const nome = inputNome.value
-''
-            const objPerfumes= {
+        async function trataForm() {
+            const id = document.getElementById("id").value;
+            const nome = document.getElementById("nome").value;
+            const preco = document.getElementById("preco").value;
+            const descricao = document.getElementById("descricao").value;
+
+            const objPerfume = {
                 id,
                 nome,
-                preço,
-                tamanho,
-                descrição
-            }
-            try{
-                const resposta = await fetch("http://localhost:8000/perfumes",{
-                    headers:{
+                preco,
+                descricao
+            };
+
+            try {
+                const resposta = await fetch("http://localhost:8000/perfumes", {
+                    method: "POST",
+                    headers: {
                         'Content-Type': 'application/json'
                     },
-                    method:"POST",
-                    body: JSON.stringify(objPerfumes)
-                })
+                    body: JSON.stringify(objPerfume)
+                });
 
-                if(resposta.status===200){
-                    alert("Usuário cadastrado com sucesso!")
+                if (resposta.ok) {
+                    alert("Perfume cadastrado com sucesso!");
+                } else if (resposta.status === 400) {
+                    const dados = await resposta.json();
+                    alert(`Erro do lado do backend:\n${dados.mensagem}`);
+                } else {
+                    alert(`Erro inesperado: Código ${resposta.status}`);
                 }
-                if(resposta.status===400){
-                    const dados = await resposta.json()
-                    alert(`Erro do lado do backend:"\n${dados.mensagem}`)
-                }
-                if(resposta.status===404){
-                    alert("Erro não identificado. :(")
-                }
-
-            }catch(erro){
-                alert("Erro: Erro na requisição do FETCH\n"+
-                 "Você ligou o BACKEND com npm run dev?")
+            } catch (erro) {
+                alert("Erro na requisição do FETCH.\nVocê ligou o backend com 'npm run dev'?");
+                console.error(erro);
             }
         }
     </script>
