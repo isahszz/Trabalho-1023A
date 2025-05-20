@@ -13,16 +13,16 @@
         <div class="content">
             <header>
                 <h1>Perfumaria</h1>
-                <div class="search-bar  ">
+                <div class="search-bar">
                     <input type="text" placeholder="Buscar perfumes">
                     <button>Pesquisar</button>
-                    <button><a href="cadastro.html">Cadastrar</a></button>
                 </div>
             </header>
             <section class="product-list">
             </section>
         </div>
     </nav>
+
     <div class="main-menu">
         <h2>Menu</h2>
         <ul>
@@ -34,41 +34,39 @@
                 </ul>
             </li>
         </ul>
+        <div class="menu-button">
+            <a href="cadastro.html">Cadastrar</a>
+        </div>
     </div>
 
     <script>
         async function buscaDados() {
-            const dados = await fetch("http://localhost:8000/perfumes")
-            console.log(dados)
+            const dados = await fetch("http://localhost:8000/perfumes");
             const listaDeProdutos = document.querySelector('.product-list');
+
             if (dados.status === 200) {
-                const produtos = await dados.json()
-                console.log(produtos)
+                const produtos = await dados.json();
                 produtos.forEach(produto => {
                     const card = document.createElement('div');
                     card.classList.add('product-card');
                     card.innerHTML = `
-                            <img src="${produto.imagem}" alt="${produto.nome}">
-                            <h2>${produto.nome}</h2>
-                            <p>${produto.preço}</p>
-                            <p>${produto.descrição}</p>
-            
-                            <button>Comprar</button>
-                             `;
+                        <img src="${produto.imagem}" alt="${produto.nome}">
+                        <h2>${produto.nome}</h2>
+                        <p>${produto.preço}</p>
+                        <p>${produto.descrição}</p>
+                        <button>Comprar</button>
+                    `;
                     listaDeProdutos.appendChild(card);
                 });
-
-            }
-            else if (dados.status === 400) {
-                const dados = await dados.json(
-                    alert(dados.mensagem)
-                )
-            }
-            else {
-                alert("ERRO NÃO IDENTIFICADO")
+            } else if (dados.status === 400) {
+                const erro = await dados.json();
+                alert(erro.mensagem);
+            } else {
+                alert("ERRO NÃO IDENTIFICADO");
             }
         }
-        buscaDados()
+
+        buscaDados();
     </script>
 </body>
 

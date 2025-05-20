@@ -26,7 +26,7 @@ header h1 {
     display: flex;
     justify-content: center;
     margin: 10px auto;
-    width: 40%;
+    width: 35%;
 }
 
 .search-bar input {
@@ -64,7 +64,7 @@ header h1 {
     top: 0;
     left: 0;
     padding-top: 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .main-menu h2 {
@@ -113,13 +113,31 @@ header h1 {
     color: #AD1457;
 }
 
+.menu-button {
+    padding: 20px;
+    text-align: center;
+}
+
+.menu-button a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #EC407A;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-button a:hover {
+    background-color: #C2185B;
+}
+
 .content {
     margin-left: 240px;
     padding: 20px;
     flex: 1;
 }
 
-/* Produtos */
 .product-list {
     display: flex;
     flex-wrap: wrap;
@@ -135,13 +153,13 @@ header h1 {
     text-align: center;
     width: 220px;
     border-radius: 12px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .product-card img {
@@ -176,52 +194,12 @@ header h1 {
     background-color: #C2185B;
 }
 
-/* Carrinho */
-.cart {
-    background: #FCE4EC;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #F48FB1;
-    max-width: 500px;
-}
-
-.cart h3 {
-    margin-top: 0;
-    color: #C2185B;
-}
-
-#cart-items {
-    list-style-type: none;
-    padding: 0;
-    margin: 0 0 15px 0;
-}
-
-#cart-items li {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 5px;
-    border-bottom: 1px solid #F48FB1;
-}
-
-#cart-items li button {
-    background-color: transparent;
-    border: none;
-    color: #F44336;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-#cart-total {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
 /* Formulário */
 form {
     background-color: #FCE4EC;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     max-width: 500px;
     margin: 40px auto;
     display: flex;
